@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import User
 from .forms import StudentRegistration
+from django.contrib import messages
 # Create your views here.
 
 #? This function add new record in the database
@@ -14,6 +15,7 @@ def add_show(request):
             password = fm.cleaned_data['password']
             reg = User(name=name, email=email, password=password)
             reg.save()
+            messages.success(request=request, message="You Successfully Add New Record")
             fm = StudentRegistration()
     else:
         fm = StudentRegistration()
@@ -30,6 +32,7 @@ def update_data(request, id):
         fm = StudentRegistration(request.POST, instance=record)
         if fm.is_valid():
             fm.save()
+        messages.success(request=request, message="You Successfully Updated your Record")
         return HttpResponseRedirect('/')
     else:
         record = User.objects.get(pk=id)
@@ -42,4 +45,5 @@ def delete_data(request, id):
     if request.method == "POST":
         record = User.objects.get(pk=id)
         record.delete()
+        messages.success(request=request, message="You Successfully Delete your Record")
         return HttpResponseRedirect('/')
