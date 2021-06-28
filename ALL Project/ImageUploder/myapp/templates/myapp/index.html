@@ -1,0 +1,49 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+    <title>Images Uploder</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="py-5 text-center bg-secondary text-white">
+            <h1 class="mb-3">Upload Your Images</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit" value="Upload" class="btn btn-danger">
+            </form>
+        </div>
+        <div class="row">
+            {% for i in img %}
+            <div class="col-sm-4">
+                <div class="card m-2">
+                    <img src="{{i.photo.url}}" class="card-img-top" alt="Image" height="320px">
+                    <div class="card-body">
+                        <small class="card-text text-muted">Uploaded: {{i.date}}</small>
+                        <form action="{% url 'delete_data' i.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="{% static 'myapp/js/jquery.js' %}"></script>
+    <script src="{% static 'myapp/js/popper.js' %}"></script>
+    <script src="{% static 'myapp/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
