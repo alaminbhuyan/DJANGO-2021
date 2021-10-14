@@ -1,0 +1,24 @@
+***** Some deep learning concept:
+--------------------------------------
+--------------------------------------
+
+
+*** Activation function, Accuracy matrix, Loss function, Optimizer.
+
+
+=> Activation function:
+	1) Segmoide: Use in binary class classification in output layers.
+	2) Softmax: Use in multi class classification in output layers.
+	3) Relu : Use convolational network and fully connected layer in input or hidden layer.
+
+=> Loss Function:
+	1) BinaryCrossentropy: Use for binary classification.
+	2) CategoricalCrossentropy: Use multi class classification.
+
+=> Accuracy Matrix:
+	1) Accuracy: Use in different classification.
+
+=> Optimizer:
+	1) SGD, RMSprop, Adam, Adadelta, Adagard, Adamax
+
+*** Fully connected neural network always take only one dimantional input.
