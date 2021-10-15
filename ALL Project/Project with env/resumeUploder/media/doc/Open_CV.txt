@@ -1,0 +1,10 @@
+***** playlist:
+1) https://www.youtube.com/watch?v=l_Mhv0rxbQk&list=PLaHodugB5x-Ddy_H951h0VHjOjfzZNCBh (2020)
+2) https://www.youtube.com/watch?v=kdLM6AOd2vc&list=PLS1QulWo1RIa7D1O6skqDQ-JZ1GGHKK-K (2019)
+3) https://www.youtube.com/watch?v=afERUKGCA08&list=PLlH6o4fAIji6epixHdlBYZthV9YVEfT9P (2020)
+
+
+**** Website 
+martoza: https://www.computervision.zone/
+
+2) http://datahacker.rs/how-to-access-and-edit-pixel-values-in-opencv-with-python/

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'django_unused_media', # Use for delete unused media files
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,34 @@
+ Night Schedule:
+*****************
+1) Saturday --> Machine Learning / Deep Learning / Coding
+
+2) Sunday(OFF)--> Machine Learning / Deep Learning / Coding
+
+3) Munday(OFF)--> Machine Learning / Deep Learning / Coding
+
+4) Tuesday-->  Machine Learning / Deep Learning / Coding
+
+5) Wednesday--> English / GRE / IELTS
+
+6) Thursday--> English / GRE / IELTS
+
+7) Friday(OFF)--> English / GRE / IELTS
+
+**************************************************************
+**************************************************************
+
+ Day Schedule:
+*****************
+1) Saturday --> GRE
+
+2) Sunday(OFF)--> GRE
+
+3) Munday(OFF)--> GRE
+
+4) Tuesday-->  Machine Learning / Deep Learning / Coding
+
+5) Wednesday--> Machine Learning / Deep Learning / Coding
+
+6) Thursday--> Machine Learning / Deep Learning / Coding
+
+7) Friday(OFF)--> Machine Learning / Deep Learning / Coding

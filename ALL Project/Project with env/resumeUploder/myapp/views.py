@@ -23,3 +23,15 @@ class CandidateView(View):
     def get(self, request, pk):
         candidate = Resume.objects.get(pk=pk)
         return render(request, 'myapp/candidate.html', {'candidate':candidate})
+
+
+class CandidateDeleteView(View):
+    def get(self, request):
+        form = ResumeForm()
+        candidates = Resume.objects.all()
+        return render(request, 'myapp/home.html', {'form':form,'candidates':candidates})
+        
+    def post(self, request, pk):
+        candidate = Resume.objects.get(pk=pk)
+        candidate.delete()
+        return HttpResponseRedirect('/')
