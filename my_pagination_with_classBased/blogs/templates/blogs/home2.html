@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+</head>
+<body>
+        <h1 style="color:red">Blogs Post</h1>
+        <hr>
+    {% if is_paginated %}
+        {% comment %} page_obj is important to use when use class based Pagination {% endcomment %}
+        {% for post in page_obj %} 
+            <h1>{{post.title}}</h1>
+            <p>{{post.description}}</p>
+            {% comment %} <span>{{post.date_time}}</span> {% endcomment %}
+            <small>{{post.date_time}}</small>
+        {% endfor %}
+        <br>
+        <div>
+            <span>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                {% endif %}
+                <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}">Next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        {% comment %} here have to be used object_list. it's come from ListView method by default {% endcomment %}
+        {% for post in object_list %} 
+            <h1>{{post.title}}</h1>
+            <p>{{post.description}}</p>
+            <small>{{post.date_time}}</small>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

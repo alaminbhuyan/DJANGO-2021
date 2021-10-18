@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+</head>
+<body>
+    <div>
+        <h1 style="color:red">Blogs Post</h1>
+        <hr>
+        {% comment %} page_obj is important to use when use class based Pagination {% endcomment %}
+        {% for post in page_obj %} 
+            <h1>{{post.title}}</h1>
+            <p>{{post.description | truncatewords:45}}<small><a href="{% url 'post_page' post.id %}">read more</a></small></p>
+            {% comment %} <span>{{post.date_time}}</span> {% endcomment %}
+            <small>{{post.date_time}}</small>
+        {% endfor %}
+    </div>
+    <br>
+    <div>
+        <span>
+            {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+            {% endif %}
+            <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+            {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">Next</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

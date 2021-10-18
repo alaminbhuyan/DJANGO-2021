@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+</head>
+<body>
+    <div>
+        <h1 style="color:red">Blogs Post</h1>
+        <hr>
+        {% for post in all_post %}
+            <h1>{{post.title}}</h1>
+            <p>{{post.description}}</p>
+            {% comment %} <span>{{post.date_time}}</span> {% endcomment %}
+            <small>{{post.date_time}}</small>
+        {% endfor %}
+    </div>
+    <br>
+    <div>
+        <span>
+            {% if all_post.has_previous %}
+                <a href="?page={{all_post.previous_page_number}}">Previous</a>
+            {% endif %}
+            <span>{{all_post.number}}</span>
+            {% if all_post.has_next %}
+                <a href="?page={{all_post.next_page_number}}">Next</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
