@@ -1,3 +1,5 @@
 1) custom filter create ---> All Project > Project with env > resumeUploder
 
 2) change local time: Asia/Dhaka
+
+3) blog 'read more' option--> pagination class based view file
