@@ -1,0 +1,10 @@
+from django.contrib import admin
+from django.urls import path, include
+from api import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('api.urls')),
+    # path(route='student/', view=views.studentAPI.as_view(), name="home"),
+
+]

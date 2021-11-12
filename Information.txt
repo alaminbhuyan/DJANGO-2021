@@ -3,3 +3,5 @@
 2) change local time: Asia/Dhaka
 
 3) blog 'read more' option--> pagination class based view file
+
+4) REST API validators --> Rest API\CURD\model_based_serializer2\api\serializers.py
