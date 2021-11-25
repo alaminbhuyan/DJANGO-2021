@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    {{student.id}}
+    {{student.name}}
+    {{student.roll}}
+    {{student.course}}
+    <hr>
+    {% for stu in all_student %}
+        <li><a href="{% url 'studentDetail' stu.id %}"> {{stu.name}} </a></li> <br>
+    {% endfor %}
+    <br>
+    <button><a href="{% url 'studentList' %}">Back Home</a></button>
+</body>
+</html>
