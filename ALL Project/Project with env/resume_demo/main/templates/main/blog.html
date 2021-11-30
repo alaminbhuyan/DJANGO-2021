@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock title %}
+{% block decription %}{% endblock decription %}
+{% block keywords %}{% endblock keywords %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock extend_header %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock extend_footer %}
+<!-- ================================
+END script blocks
+================================= -->
+
+{% block content %}
+<section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3  align-items-center">
+        <div class="col-md-6">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">See my recent blogs below</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="lightBg">
+    <div class="container">
+      <div class="portfolioContentMain">
+        <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+          {% for obj in object_list %}
+            <div class="col-md-6 pColMain">
+              <div class="pCol">
+                <a href="{% url 'blog' slug=obj.slug %}" >
+                <img src="{{obj.image.url}}" alt="image" class="pImg">
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================================
+End Content
+================================= -->
+{% endblock content %}
+
+{% comment %} <section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3  align-items-center">
+        <div class="col-md-6">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">See my recent blogs below</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="lightBg">
+    <div class="container">
+      <div class="portfolioContentMain">
+        <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <img src="images/project-img.jpg" alt="..." class="pImg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+

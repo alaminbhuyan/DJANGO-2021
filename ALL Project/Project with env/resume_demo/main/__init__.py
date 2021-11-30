@@ -1,0 +1,1 @@
+default_app_name = 'main.apps.MainConfig'

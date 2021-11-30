@@ -1,0 +1,92 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock title %}
+{% block decription %}{% endblock decription %}
+{% block keywords %}{% endblock keywords %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock extend_header %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock extend_footer %}
+<!-- ================================
+END script blocks
+================================= -->
+
+{% block content %}
+<!-- ================================
+Start Content
+================================= -->
+<section>
+  <div class="innerPageBannerCol">
+    <div class="container">
+      <div class="row g-4 g-md-3  align-items-center">
+        <div class="col-md-6">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-md-3">{{object.name}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sectionSpaceSm">
+    <div class="container">
+      {{object.body|safe}}
+      {% comment %} here safe use for actual data on the page. if we not use 
+      safe then it will show data with html tag {% endcomment %}
+    </div>
+  </div>
+</section>
+<!-- ================================
+End Content
+=================================-->
+{% endblock content %}
+
+    {% comment %} <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">Portfolio title</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpaceSm">
+        <div class="container">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Aenean congue imperdiet lorem ut posuere. Maecenas nec accumsan 
+          risus, quis luctus libero. Morbi a nulla ac felis scelerisque 
+          feugiat quis vitae turpis. Vivamus nec augue vel enim scelerisque 
+          cursus. Curabitur efficitur ipsum quis turpis bibendum egestas. 
+          Nunc ac euismod dolor. Vestibulum nec ipsum fermentum, semper 
+          quam eu, porttitor elit. Maecenas efficitur ex eget augue euismod 
+          semper. Curabitur pharetra tortor vel orci volutpat semper. 
+          Donec feugiat mauris ante. In hac habitasse platea dictumst.
+          </p>
+        </div>
+      </div>
+    </section> {% endcomment %}
+
