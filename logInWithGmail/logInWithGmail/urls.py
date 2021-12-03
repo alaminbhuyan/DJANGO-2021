@@ -22,6 +22,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="social_app/index.html")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', views.user_logout, name="logout")
+    path('logout/', views.user_logout, name="logout")
     # path('accounts/', include('django.contrib.auth.urls')),
 ]
