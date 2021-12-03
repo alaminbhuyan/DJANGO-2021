@@ -25,13 +25,12 @@
     </div>
 
     {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }} !</p>
+      <p>Welcome, {{ user.username }} !</p>
+      <a href="{% url 'logout' %}" class="btn btn-danger">LogOut</a>
 
     {% else %}
     <div class="alert alert-danger" role="alert">
-      <a href="{% provider_login_url 'google' %}" class="alert-link"
-        >Clike Here</a
-      >Login with Google Accounts.
+      <a href="{% provider_login_url 'google' %}" class="alert-link">Clike Here</a> Login with Google Accounts.
     </div>
 
     {% endif %}
