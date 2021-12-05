@@ -7,3 +7,5 @@
 4) REST API validators --> Rest API\CURD\model_based_serializer2\api\serializers.py
 
 5) CURD_class_based_with_API --> rest api\curd_class_based
+
+6) View based authentication --> Inside the Class View folder
