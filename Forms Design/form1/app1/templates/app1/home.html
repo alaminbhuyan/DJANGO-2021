@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>User form</h1>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+            <label for="{{fm.id_for_label}}">{{fm.label_tag}}</label>
+            <input type="text" name="{{fm.html_name}}" required  id="{{fm.id_for_label}}"> <br><br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
+
+    {% comment %} <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <label for="{{form.username.id_for_label}}">{{form.username.label_tag}}</label>
+        <input type="text" name="{{form.username.html_name}}" required  id="{{form.username.id_for_label}}">
+        <input type="submit" value="Submit">
+    </form>
+    <hr> {% endcomment %}
+    {% comment %} <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{form.username.id_for_label}}
+        {{form.username}}<br>
+        {{form.username.label}}<br>
+        {{form.username.label_tag}}<br>
+        {{form.username.value}}<br>
+        {{form.username.html_name}}<br>
+        {{form.username.html_text}}<br>
+        {{form.username.help_text}}<br>
+        {{form.username.field.help_text}}<br>
+        {{form.username.field.required}}<br>
+    </form> {% endcomment %}
+</body>
+</html>
