@@ -9,3 +9,5 @@
 5) CURD_class_based_with_API --> rest api\curd_class_based
 
 6) View based authentication --> Inside the Class View folder
+
+7) Login/logout/Signup --> Authentication>UserChangeProfile

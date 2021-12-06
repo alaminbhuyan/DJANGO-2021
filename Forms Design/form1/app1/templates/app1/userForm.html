@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'app1/css/bootstrap.min.css' %}">
+    <style>
+        .errorlist{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <title>User Form</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h1 class="bg-info text-center p-3">User Registrations Form</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-3 shadow p-3">
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+                        {% for fm in form %}
+                            <div class="mb-2">
+                                <label for="{{fm.id_for_label}}" class="form-label"><span class="">{{fm.label_tag}}</span></label>
+                                {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                            </div>  
+                        {% endfor %}
+                        <span class="text-danger">{{form.non_field_errors}}</span>
+                            {% comment %} {% if messages %} 
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                                    <span class="text-danger">{{message}}</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %} {% endcomment %}
+
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    <a href="http://" target="_blank" class="btn btn-danger mt-2" rel="noopener noreferrer">Cancel</a>
+                    {% comment %} {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p class="text-secondary">{{error}}</p>
+                        {% endfor %}
+                    {% endif %} {% endcomment %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="{% static 'app1/js/jquery.js' %}"></script>
+    <script src="{% static 'app1/js/popper.js' %}"></script>
+    <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

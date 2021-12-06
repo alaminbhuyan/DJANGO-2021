@@ -12,7 +12,8 @@
         {% csrf_token %}
         {% for fm in form %}
             <label for="{{fm.id_for_label}}">{{fm.label_tag}}</label>
-            <input type="text" name="{{fm.html_name}}" required  id="{{fm.id_for_label}}"> <br><br>
+            {{fm}} <br><br>
+            {% comment %} <input type="text" name="{{fm.html_name}}" required  id="{{fm.id_for_label}}"> <br><br> {% endcomment %}
         {% endfor %}
         <input type="submit" value="Submit">
     </form>

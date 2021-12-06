@@ -1,0 +1,3 @@
+
+*** If you use ChangePassword Form, LoginForm, SingUpForm, UserChangeProfile Form then you don't need to create
+database table by-default it save the data in database autmatically.
