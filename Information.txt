@@ -11,3 +11,7 @@
 6) View based authentication --> Inside the Class View folder
 
 7) Login/logout/Signup --> Authentication>UserChangeProfile
+
+8) when login then don't show Singup --> Forms Design>userForms>templates>home.html
+
+9) User Email varification by send email --> Practice>userForms
