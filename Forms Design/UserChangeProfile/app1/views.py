@@ -76,9 +76,3 @@ def userLogout(request):
     logout(request=request)
     messages.success(request=request, message="LogOut Successfully!!")
     return HttpResponseRedirect(redirect_to='/login/')
-
-def myprofile(request):
-    return render(request=request, template_name="app1/index2.html")
-
-def myprofile2(request):
-    return render(request=request, template_name="app1/index3.html")
