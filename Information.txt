@@ -12,6 +12,10 @@
 
 7) Login/logout/Signup --> Authentication>UserChangeProfile
 
-8) when login then don't show Singup --> Forms Design>userForms>templates>home.html
+8) when login then don't show Singup --> Forms Design > userForms > templates > home.html
 
-9) User Email varification by send email --> Practice>userForms
+9) User Email varification by send email --> Practice > userForms
+
+10) User profile for individual user login --> Forms Design > userProfile
+
+11) Re-set password using email --> Authentication > resetPasswordWithGmail
