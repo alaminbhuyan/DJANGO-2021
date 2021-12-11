@@ -6,5 +6,4 @@ urlpatterns = [
     path(route='', view=views.userLogin, name='login'),
     path(route='home/', view=views.home, name='home'),
     path(route='logout/', view=views.userLogout, name='logout'),
-    path(route='header/', view=views.myheader, name='header'),
 ]

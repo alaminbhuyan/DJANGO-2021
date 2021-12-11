@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+  <meta name="generator" content="Hugo 0.88.1" />
+  <link rel="stylesheet" href="{% static 'app1/css/bootstrap.min.css' %}" />
+  
+  <link rel="stylesheet" href="{% static 'app1/css/headers.css' %}" />
+ 
+  <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <!-- Headers start! -->
+    {% comment %} <header class="p-3 mb-3 border-bottom bg-dark text-white"> {% endcomment %}
+    <header class="p-3  border-bottom bg-dark text-white">
+      <div class="container">
+          <div class="
+                d-flex
+                flex-wrap
+                align-items-center
+                justify-content-center justify-content-lg-start
+              ">
+            <!-- <a href="/" class="
+                  d-flex
+                  align-items-center
+                  mb-2 mb-lg-0
+                  text-dark text-decoration-none
+                ">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use xlink:href="#bootstrap" />
+              </svg> -->
+            </a>
+  
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="{% url 'home' %}" class="nav-link px-2 text-white">Home</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Blog</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Contact</a></li>
+            </ul>
+  
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+            </form>
+  
+            <div class="text-end">
+              {% if user.is_authenticated %}
+                  <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="{{request.user.profile.user_profile_image.url}}" alt="mdo" width="32" height="32" class="rounded-circle" />
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Signed In as <br><b>'{{request.user.username | capfirst}}'</b></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                        <li> <hr class="dropdown-divider"> </li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                    </ul>
+                  </div>
+              {% else %}
+                  <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+                  <a href="{% url 'signup' %}" class="btn btn-warning">Sign-up</a>
+              {% endif %}
+            </div>
+          </div>
+      </div>
+    </header>
+    <!-- Headers End! -->
+
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+                <strong>Message:</strong> {{message}}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <!-- Content start! -->
+    {% block content %}{% endblock content %}
+    <!-- Content end! -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+  <script src="{% static 'app1/js/jquery.js' %}"></script>
+  <script src="{% static 'app1/js/popper.js' %}"></script>
+  <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

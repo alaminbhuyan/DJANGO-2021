@@ -1,0 +1,53 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+    {% block title %}profile{% endblock title %}
+
+
+{% block content %}
+        <!-- Container start! -->
+        <div class="container mt-3">
+          <div class="row justify-content-center">
+            <div class="col-md-5">
+              <h1 class="lead display-6  text-center p-2">User Profile Form</h1><hr>
+            </div>
+          </div>
+          {% comment %} {% if messages %}
+              {% for message in messages %}
+                  <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+                      <strong>Message:</strong> {{message}}.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              {% endfor %}
+          {% endif %} {% endcomment %}
+          <div class="row justify-content-center">
+              <div class="col-md-5 mt-3 shadow p-3">
+                      <div class="mb-2">
+                          <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                    <p>{{error}}</p>
+                                {% endfor %}
+                            {% endif %}
+                            {% for fm in user_form %}
+                                <div class="mb-3">
+                                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                                </div> 
+                            {% endfor %}
+                            {% for fm in profile_form %}
+                                  <div class="mb-3">
+                                      {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                                  </div> 
+                              {% endfor %}
+                            <button type="submit" class="btn btn-primary mt-2">UpdateProfile</button>
+                            <a class="btn btn-success mt-2" href="{% url 'changepassword' %}">ChangePassword</a>
+                        </form>
+                      </div>
+              </div>
+          </div>
+        </div>
+        <!-- Container End! -->
+{% endblock content %}
+
+

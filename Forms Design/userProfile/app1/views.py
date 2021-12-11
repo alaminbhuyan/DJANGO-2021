@@ -39,9 +39,9 @@ def userLogin(request):
                     return HttpResponseRedirect(redirect_to='/home/')
         else:
             form = AuthenticationForm()
-        obj = EveryUserProfile.objects.all()
+        # obj = EveryUserProfile.objects.all()
         # print(obj)
-        return render(request=request, template_name="app1/userLogin.html", context={'form' : form, 'obj':obj})
+        return render(request=request, template_name="app1/userLogin.html", context={'form' : form})
     else:
         # return HttpResponseRedirect(redirect_to='/')
         return HttpResponse("You are already login")
@@ -51,7 +51,3 @@ def userLogout(request):
     logout(request=request)
     messages.success(request=request, message="Logout successfully!!")
     return HttpResponseRedirect(redirect_to='/')
-
-
-def myheader(request):
-    return render(request=request, template_name="app1/index3.html")
