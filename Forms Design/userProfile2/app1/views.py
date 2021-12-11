@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http.response import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import (SignUpForm, EditUserProfileForm, 
@@ -98,3 +99,16 @@ def userLogout(request):
     logout(request=request)
     messages.success(request=request, message="LogOut Successfully!!")
     return HttpResponseRedirect(redirect_to='/login/')
+
+
+def deleteConfirmation(request):
+    return render(request=request, template_name="app1/deleteConfirmation.html")
+
+
+def deleteAccount(request, email):
+    user_email = User.objects.get(email=email)
+    if user_email:
+        messages.success(request=request, message="User Profile Deleted Successfully")
+        user_email.delete()
+        return HttpResponseRedirect(redirect_to='/')
+    return HttpResponse("Error: Something is wrong")
