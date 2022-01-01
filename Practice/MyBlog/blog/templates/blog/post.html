@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+
+
+
+        {% for post in all_post %}
+            {{post.text | safe }}
+        {% endfor %}
+</body>
+</html>
