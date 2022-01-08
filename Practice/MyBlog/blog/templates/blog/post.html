@@ -9,6 +9,7 @@
 
 
         {% for post in all_post %}
+            <h3>{{post.last_update}}</h3>
             {{post.text | safe }}
         {% endfor %}
 </body>

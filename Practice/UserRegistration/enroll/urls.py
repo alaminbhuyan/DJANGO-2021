@@ -10,3 +10,6 @@ urlpatterns = [
     path(route='changePassword2', view=views.userChangePassword2, name="user_changePassword2"),
     path(route='userdetails/<int:id>', view=views.userDetails, name="user_detail"),
 ]
+
+# username: alamin; password: geekyshows
+# username: fatema; password: geekyshows

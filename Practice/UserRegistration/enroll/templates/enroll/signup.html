@@ -12,6 +12,7 @@
         {% for fm in form %}
             {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br><br>
         {% endfor %}
+        <input type="checkbox" onclick="myFunction()">Show Password <br><br>
         <input type="submit" value="Submit">
     </form><br><br>
     {% if messages %}
@@ -20,5 +21,19 @@
         {% endfor %}
     {% endif %}
     <a href="{% url 'login_form' %}">LogIn</a>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("id_password1");
+            var y = document.getElementById("id_password2");
+            if (x.type === "password" && y.type === "password") {
+              x.type = "text";
+              y.type = "text";
+            } else {
+              x.type = "password";
+              y.type = "password";
+            }
+          }
+    </script>
 </body>
 </html>
