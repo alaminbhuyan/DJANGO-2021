@@ -35,7 +35,7 @@ class PostListView2(ListView):
     template_name = "blogs/home2.html"
     ordering = ['id']
     # paginate_by = 3 # if this line is comment then is_paginated will be false that's why all object show in webpage
-    paginate_orphans = 1
+    # paginate_orphans = 1
 
     # handle Http-404 error
     def get_context_data(self, *args, **kwargs):
