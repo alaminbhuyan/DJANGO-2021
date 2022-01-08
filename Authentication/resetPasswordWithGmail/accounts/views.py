@@ -1,41 +1,47 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Profile
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 from .helpers import send_forget_password_mail
 import uuid
 
 # Create your views here.
+
 
 def Login(request):
     try:
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
-            
+
+            # if user not enter username or password then this condition will be apply
             if not username or not password:
-                messages.success(request, 'Both Username and Password are required.')
+                messages.success(
+                    request, 'Both Username and Password are required.')
                 return redirect('/login/')
-            user_obj = User.objects.filter(username = username).first()
+
+            user_obj = User.objects.filter(username=username).first()
+
+            # if user put wrong username then this condition will be apply
             if user_obj is None:
                 messages.success(request, 'User not found.')
                 return redirect('/login/')
-        
-        
-            user = authenticate(username = username , password = password)
-            
+
+            user = authenticate(username=username, password=password)
+
+            # if user put wrong password then this condition will be apply
             if user is None:
                 messages.success(request, 'Wrong password.')
                 return redirect('/login/')
-        
-            login(request , user)
+
+            login(request, user)
             return redirect('/')
-       
+
     except Exception as e:
         print(e)
-    return render(request , 'accounts/login.html')
+    return render(request, 'accounts/login.html')
 
 
 def Register(request):
@@ -46,19 +52,19 @@ def Register(request):
             password = request.POST.get('password')
 
         try:
-            if User.objects.filter(username = username).first():
+            if User.objects.filter(username=username).first():
                 messages.success(request, 'Username is taken.')
                 return redirect('/register/')
 
-            if User.objects.filter(email = email).first():
+            if User.objects.filter(email=email).first():
                 messages.success(request, 'Email is taken.')
                 return redirect('/register/')
-            
-            user_obj = User(username = username , email = email)
+
+            user_obj = User(username=username, email=email)
             user_obj.set_password(password)
             user_obj.save()
-    
-            profile_obj = Profile.objects.create(user = user_obj)
+
+            profile_obj = Profile.objects.create(user=user_obj)
             profile_obj.save()
             return redirect('/login/')
 
@@ -66,9 +72,9 @@ def Register(request):
             print(e)
 
     except Exception as e:
-            print(e)
+        print(e)
 
-    return render(request , 'accounts/register.html')
+    return render(request, 'accounts/register.html')
 
 
 def Logout(request):
@@ -78,58 +84,57 @@ def Logout(request):
 
 @login_required(login_url='/login/')
 def Home(request):
-    return render(request , 'accounts/home.html')
+    return render(request, 'accounts/home.html')
 
 
-def ChangePassword(request , token):
+def ChangePassword(request, token):
     context = {}
     try:
-        profile_obj = Profile.objects.filter(forget_password_token = token).first()
-        context = {'user_id' : profile_obj.user.id}
-        
+        profile_obj = Profile.objects.filter(
+            forget_password_token=token).first()
+        context = {'user_id': profile_obj.user.id}
+
         if request.method == 'POST':
             new_password = request.POST.get('new_password')
             confirm_password = request.POST.get('reconfirm_password')
             user_id = request.POST.get('user_id')
-            
-            if user_id is  None:
+
+            if user_id is None:
                 messages.success(request, 'No user id found.')
                 return redirect(f'/change-password/{token}/')
-                
-            
-            if  new_password != confirm_password:
+
+            if new_password != confirm_password:
                 messages.success(request, 'both should  be equal.')
                 return redirect(f'/change-password/{token}/')
-                         
-            
-            user_obj = User.objects.get(id = user_id)
+
+            user_obj = User.objects.get(id=user_id)
             user_obj.set_password(new_password)
             user_obj.save()
             return redirect('/login/')
 
     except Exception as e:
         print(e)
-    return render(request , 'accounts/change-password.html' , context)
+    return render(request, 'accounts/change-password.html', context)
 
 
 def ForgetPassword(request):
     try:
         if request.method == 'POST':
             email = request.POST.get('email')
-            
+
             if not User.objects.filter(email=email).first():
                 messages.success(request, 'Not Email found with this Email.')
                 return redirect('/forget-password/')
-            
-            user_obj = User.objects.get(email = email)
+
+            user_obj = User.objects.get(email=email)
             token = str(uuid.uuid4())
-            profile_obj= Profile.objects.get(user = user_obj)
+            profile_obj = Profile.objects.get(user=user_obj)
             profile_obj.forget_password_token = token
             profile_obj.save()
-            send_forget_password_mail(user_obj.email , token)
+            send_forget_password_mail(user_obj.email, token)
             messages.success(request, 'An email is sent.')
             return redirect('/forget-password/')
 
     except Exception as e:
         print(e)
-    return render(request , 'accounts/forget-password.html')
+    return render(request, 'accounts/forget-password.html')

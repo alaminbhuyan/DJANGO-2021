@@ -7,11 +7,16 @@
     <title>Login</title>
 </head>
 <body>
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="{{message.tags}}" {% endif %} style="color:red;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
     <div>
         <h1>Login form</h1>
         <form action="" method="post">
             {% csrf_token %}
-            Email : <input type="email" name="email" id="email"><br><br>
+            Username : <input type="text" name="username" id="username"><br><br>
             Password : <input type="text" name="password" id="password"><br><br>
             <input type="submit" value="Submit"><br><br>
         </form>

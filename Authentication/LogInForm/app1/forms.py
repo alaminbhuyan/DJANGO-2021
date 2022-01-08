@@ -1,4 +1,6 @@
 # If we want to show more fields in webpage then use this technique
+# comment: By-Default in 'UserCreationForm' have three fields
+#   1) UserName 2) Password 3) Confirm Password (password2)
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm

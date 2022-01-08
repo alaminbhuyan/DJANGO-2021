@@ -8,6 +8,12 @@
 </head>
 <body>
     <div>
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{message.tags}}" {% endif %} style="color:red;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        
         <h1>Register form</h1>
         <form action="" method="post">
             {% csrf_token %}
