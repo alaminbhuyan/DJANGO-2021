@@ -9,3 +9,9 @@ urlpatterns = [
     path(route='logout/', view=views.userLogout, name="logout"),
     path(route='changepassword/', view=views.userChangePassword, name="changepassword"),
 ]
+
+
+# admin password:
+
+# 1) username: alamin ; password: geekyshows123
+# 2) username: fatema ; password: geekyshows

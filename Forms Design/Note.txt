@@ -1,0 +1,13 @@
+*** which application used which technique
+
+1) form1 --> apply function based view
+
+2) UserChangeProfile --> apply function based view
+
+3) userForms --> apply function based view (signUp: good, changePassword: good, login: good, profileUpdate: not good)
+
+4) userProfile --> apply function based view (login: good)
+
+5) userProfile2 --> apply function based view (signUp: good, changePassword: good, login: good, profileUpdate: not good)
+
+6) signUpWithGmail --> apply function based view (some module is depricated so not working)

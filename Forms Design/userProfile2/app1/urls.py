@@ -14,3 +14,9 @@ urlpatterns = [
     path(route='delete/<str:email>', view=views.deleteAccount, name="delete"),
 
 ]
+
+# Some userprofile password
+
+# 1) username: alamin; password: geekyshows
+# 2) username: alamin; password: geekyshows
+# 3) username: alamin; password: geekyshows

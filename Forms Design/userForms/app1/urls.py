@@ -14,3 +14,9 @@ urlpatterns = [
     # path(route='my2/', view=views.myprofile2, name="my2"),
 
 ]
+
+
+# some user profile password
+
+# 1) username: alamin, password: geekyshows
+# 2) username: mim, password: geekyshows
