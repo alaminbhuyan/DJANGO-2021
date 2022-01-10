@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %}About{% endblock title %}
+  <!-- content start -->
+{% block content %}
+  <main>
+    <div class="container-fluid" style="background-color: #F3F4F6;">
+      <div class="container">
+        {% for post in all_posts %}
+          <div class="row justify-content-center">
+            <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+              <h2 class="text-center text-muted" style="font-family: 'Secular One', sans-serif;">{{post.header}}</h2>
+              <hr class="text-muted">
+              <div>
+                {{post.text | safe}}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+  <hr>
+{% endblock content %}
+  <!-- content end-->

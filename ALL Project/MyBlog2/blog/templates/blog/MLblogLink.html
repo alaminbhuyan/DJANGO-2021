@@ -1,0 +1,84 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %}Machine Learning-Blog{% endblock title %}
+  <!-- content start -->
+{% block content %}
+  <main>
+    <div class="container-fluid" style="background-color: #F3F4F6;">
+      <div class="container">
+        {% if is_paginated %}
+          {% for post in all_posts %}
+            <div class="row">
+              <div class="col-sm-8 my-3 p-4 bg-body shadow rounded">
+                <p class="fw-bold" style="font-family: 'Raleway', sans-serif;">Published, {{post.post_created}}</p>
+                <h4 style="font-family: 'Secular One', sans-serif;"><a href="{% url 'MLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">{{post.title}}</a></h4>
+                <p class="text-muted">{{post.description | truncatewords:150}}</p>
+                <a href="{% url 'MLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a>
+              </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+        <!-- Paginate start -->
+        <div class="row">
+          <div class="col-sm-8">
+            <nav aria-label="" class="">
+              <ul class="pagination">
+
+                <li class="page-item">
+                  {% if page_obj.has_previous %}
+                    <a href="?page=1" class="page-link">First</a>
+                  {% endif %}
+                </li>
+
+                {% if page_obj.has_previous %}
+                  <li class="page-item">
+                    <a href="?page={{page_obj.previous_page_number}}" class="text-decoration-none page-link">Previous</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a href="" class="text-decoration-none page-link">Previous</a>
+                  </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                  {% if page_obj.number == num %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li>
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a href="?page={{page_obj.next_page_number}}" class="text-decoration-none page-link">Next</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a href="" class="text-decoration-none page-link">Next</a>
+                  </li>
+                {% endif %}
+
+                <li class="page-item">
+                  {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="text-decoration-none page-link">Last</a>
+                  {% endif %}
+                </li>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- Paginate end -->
+      </div>
+
+    </div>
+  </main>
+  <hr>
+{% endblock content %}
+  <!-- content end-->

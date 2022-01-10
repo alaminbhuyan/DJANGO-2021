@@ -1,0 +1,70 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}login{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+          <h1 class="lead display-6  text-center p-2">User LogIn Form</h1><hr>
+        </div>
+      </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+                    <strong>Message:</strong> {{message}}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-4 mt-5 shadow p-3">
+                <div class="mb-2">
+                    <form action="" method="POST" novalidate>
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p>{{error}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% for fm in form %}
+                            <div class="mb-3">
+                                {{fm.label_tag}}
+                                {{fm}} 
+                                <small class="text-danger">{{fm.errors|striptags}}</small>
+                            </div> 
+                        {% endfor %}
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="myFunction()" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Show Password
+                            </label>
+                        </div>
+
+                        <div class="text-end"><a href="">Forgot password</a></div>
+                        <button type="submit" class="btn btn-primary mt-2">LogIn</button>
+                        <a class="btn btn-danger mt-2" href="{% url 'home' %}">Close</a>
+                    </form>
+                </div>
+                <div class="text-center mt-4">
+                    <small>Already have an account? <a href="{% url 'signup' %}">Create One</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% comment %} Password Show Function Start {% endcomment %}
+    <script>
+        function myFunction() {
+            var x = document.getElementById("id_password");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+          }
+    </script>
+    {% comment %} Password Show Function End {% endcomment %}
+{% endblock content %}
