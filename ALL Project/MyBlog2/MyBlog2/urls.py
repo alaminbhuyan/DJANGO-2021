@@ -19,12 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 # For change the admin panel Header, Title and Index title
-admin.site.site_header = "iCoder Admin"
-admin.site.site_title = "iCoder Admin Panel"
-admin.site.index_title = "Welcome to iCoder Admin Panel"
+admin.site.site_header = "iCoder Blog Admin"
+admin.site.site_title = "iCoder Blog Admin Panel"
+admin.site.index_title = "Welcome to iCoder Blog Admin Panel"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path(route='', view=include('blog.urls')),
     path(route='myaccount/', view=include('myaccount.urls')),
 ]

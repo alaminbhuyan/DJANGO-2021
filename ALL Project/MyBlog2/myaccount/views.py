@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib.auth.models import User
 from .models import EveryUserProfile
-from .tokens import send_email_after_registration
+from .tokens import send_email_after_registration, setForgotPassword
 from django.views import View
 from .forms import (SignUpForm, EditUserProfileForm, 
 MyAuthenticationForm, MyPasswordChangeForm, EveryUserProfileForm)
@@ -27,8 +27,7 @@ def signup(request):
                 uid = uuid.uuid4()
                 profile_object = EveryUserProfile(user=new_user, token=uid)
                 profile_object.save()
-                messages.success(
-                request, "One email send to Your Email Address, Check your Email and Verify Your Account")
+                messages.info(request=request, message="One email send to Your Email Address, Check your Email and Verify Your Account")
                 send_email_after_registration(email=new_user.email, token=uid)
                 return HttpResponseRedirect(redirect_to='/myaccount/signin/')
         else:
@@ -50,7 +49,7 @@ def signin(request):
 
                 if pro.verify:
                     login(request=request, user=user)
-                    # messages.success(request=request, message="Login Successfully!")
+                    messages.success(request=request, message="Logged In Successfully!")
                     return HttpResponseRedirect(redirect_to='/')
                 else:
                     messages.error(request=request, message="Your account is not verified, please check your email and verify your Account")
@@ -65,7 +64,7 @@ def signin(request):
 def account_verify(request, token):
     pf = EveryUserProfile.objects.filter(token=token).first()
     if pf.verify:
-        messages.success(request, "Your account already verified. Don't need to verify again!")
+        messages.info(request, "Your account already verified. Don't need to verify again!!")
         return HttpResponseRedirect(redirect_to='/myaccount/signin/')
     else:
         pf.verify = True
@@ -80,7 +79,7 @@ def profile(request):
             user_form = EditUserProfileForm(data = request.POST, instance=request.user)
             profile_form = EveryUserProfileForm(data= request.POST, files=request.FILES, instance=request.user.profile)
             if user_form.is_valid() and profile_form.is_valid():
-                messages.success(request=request, message="Profile Updated Successfully")
+                messages.success(request=request, message="Profile Updated Successfully!!")
                 user_form.save()
                 profile_form.save()
         else:
@@ -104,7 +103,7 @@ def userChangePassword(request):
                 form.save()
                 messages.success(request=request, message="Password updated Successfully!!")
                 update_session_auth_hash(request=request, user=form.user)
-                return HttpResponseRedirect(redirect_to='/myaccount/profile/')
+                return HttpResponseRedirect(redirect_to='/')
         else:
             form = MyPasswordChangeForm(user=request.user)
         return render(request=request, template_name="myaccount/changepassword.html", context={'form' : form})
@@ -139,3 +138,59 @@ def deleteContact(email):
 def accountLogout(request):
     logout(request=request)
     return HttpResponseRedirect(redirect_to='/myaccount/signin/')
+
+
+def setNewPassword(request, token):
+    context = {}
+    try:
+        profile_obj = EveryUserProfile.objects.filter(forgetPasswordToken=token).first()
+        context = {'user_id' : profile_obj.user.id}
+
+        if request.method == 'POST':
+            newPassword = request.POST.get('newPassword')
+            confirmPassword = request.POST.get('reconfirmPassword')
+            user_id = request.POST.get('user_id')
+
+            if user_id is None:
+                messages.error(request=request, message="No User ID found")
+                return HttpResponseRedirect(redirect_to=f"/myaccount/setNewPassword/{token}/")
+            
+            if newPassword != confirmPassword:
+                messages.error(request=request, message="Password not match")
+                return HttpResponseRedirect(redirect_to=f"/myaccount/setNewPassword/{token}/")
+            
+            user_obj = User.objects.get(id=user_id)
+            user_obj.set_password(newPassword)
+            user_obj.save()
+            messages.success(request=request, message="Password Reset Successfully!!")
+            return HttpResponseRedirect(redirect_to='/myaccount/signin/')
+
+    except Exception as e:
+        pass
+    return render(request=request, template_name='myaccount/setNewPassword.html', context=context)
+
+
+
+# Comment: Forget password Function
+def forgetPassword(request):
+    try:
+        if request.method == 'POST':
+            email = request.POST.get('email')
+
+            if not User.objects.filter(email=email).first():
+                messages.error(request=request, message="Email not found like this Email")
+                return HttpResponseRedirect(redirect_to='/myaccount/forgetPassword/')
+            else:
+                user_obj = User.objects.get(email=email)
+                token = str(uuid.uuid4())
+                profile_obj = EveryUserProfile.objects.get(user=user_obj)
+                profile_obj.forgetPasswordToken = token
+                profile_obj.save()
+                setForgotPassword(email=email, token=token)
+                messages.info(request=request, message="An Email is Sent to your Mail, Check your Email and reset your password")
+                return HttpResponseRedirect(redirect_to='/myaccount/signin/')
+
+
+    except Exception as e:
+        pass
+    return render(request=request, template_name="myaccount/forgetPassword.html")

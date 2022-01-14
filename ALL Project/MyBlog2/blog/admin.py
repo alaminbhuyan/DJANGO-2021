@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import (PythonBlogPost, DjangoBlogPost, 
-MLBlogPost, DLBlogPost, AboutUs, Contact)
+MLBlogPost, DLBlogPost, AboutUs, Contact, PythonBlogComment,
+DjangoBlogComment, MLBlogComment, DLBlogComment)
 from .forms import (PythonBlogAdminForm, DjangoBlogAdminForm,
  MLBlogAdminForm, DLBlogAdminForm, AboutUsAdminForm)
 
@@ -37,3 +38,24 @@ class MLBlogPostAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactModelAdmin(admin.ModelAdmin):
     list_display = ['id','name', 'email']
+
+
+# Register all blog comment class
+@admin.register(PythonBlogComment)
+class PythonBlogCommentModelAdmin(admin.ModelAdmin):
+    list_display = ['sno', 'user', 'parent']
+
+
+@admin.register(DjangoBlogComment)
+class DjangoBlogCommentModelAdmin(admin.ModelAdmin):
+    list_display = ['sno', 'user', 'parent']
+
+
+@admin.register(MLBlogComment)
+class MLBlogCommentModelAdmin(admin.ModelAdmin):
+    list_display = ['sno', 'user', 'parent']
+
+
+@admin.register(DLBlogComment)
+class DLBlogCommentModelAdmin(admin.ModelAdmin):
+    list_display = ['sno', 'user', 'parent']

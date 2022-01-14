@@ -6,4 +6,4 @@ from .models import EveryUserProfile
 
 @admin.register(EveryUserProfile)
 class EveryUserProfileAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'token', 'verify']
+    list_display = ['id', 'user', 'token', 'forgetPasswordToken', 'verify']

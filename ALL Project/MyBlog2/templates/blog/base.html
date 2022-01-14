@@ -35,8 +35,8 @@
           </ul>
 
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'search' %}", method="GET">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="query" id="query">
           </form>
   
           {% if user.is_authenticated %}
@@ -63,10 +63,21 @@
       </div>
     </header>
     <!-- header end -->
+    
+    {% if messages %}
+      {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show mb-0" role="alert">
+            <strong>Message:</strong> {{message}}.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
 
     <!-- content start -->
-    {% block content %}{% endblock content %}
+    {% block content %}
+    {% endblock content %}
     <!-- content end-->
+
 
     <!-- footer start -->
     <footer class="container-fluid py-3 my-0">

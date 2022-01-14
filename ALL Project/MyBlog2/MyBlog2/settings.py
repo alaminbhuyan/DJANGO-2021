@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--7_-yo4=)4yp&ur(aqz@9c9um$ru0&95-5+zpbix=k14lk)=4z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,10 +38,47 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # comment: SignIn or SignUp with google
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    # for like 2 days ago show time
+    'django.contrib.humanize',
+
+    # comment: for Rich text editor
     # 'tinymce',
+
+    # comment: My created app
     'blog',
     'myaccount',
 ]
+
+# comment: For SignIn or SignUp with google
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+# comment: For SignIn or SignUp with google
+
+SITE_ID = 2
+LOGIN_REDIRECT_URL = '/'
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -172,8 +209,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '2191081030@uttarauniversity.edu.bd'
-EMAIL_HOST_PASSWORD = 'uttarauniversity'
+EMAIL_HOST_USER = 'alaminbhuyan633@gmail.com'
+EMAIL_HOST_PASSWORD = "@#*toreamimarmo"
 
 
 # comment: for message framework

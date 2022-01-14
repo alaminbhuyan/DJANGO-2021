@@ -1,0 +1,89 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %}Search Results{% endblock title %}
+  <!-- content start -->
+{% block content %}
+  <main>
+      <div class="container-fluid" style="background-color: #F3F4F6;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-10 my-4">
+                  <p class="text-muted h5"><b>Search Results:</b>  About {{len_post}} results ( {{total_time_taken}} seconds )</p>
+                  
+                  <!-- Condition start -->
+                  {% if len_post < 1 %}
+                      <p><b>No Search results</b></p>
+                      <p>Your search query: <b>{{query|truncatechars:100}}</b> didn't match any documents</p>
+                      <div>
+                          <ul>
+                              <li>Try differnet keywords</li>
+                              <li>Try related keywords</li>
+                              <li>Make sure that all words are spelled correctly.</li>
+                              <li>Try more general keywords.</li>
+                          </ul>
+                      </div>
+                  {% endif %}
+                  <!-- Condition end -->
+                </div>
+            </div>
+
+            {% for post in python_posts %}
+              <div class="row justify-content-center">
+                <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                  <p class="fw-bold" style="font-family: 'Raleway', sans-serif;">Published, {{post.post_created}}</p>
+                  <h4 style="font-family: 'Secular One', sans-serif;"><a href="{% url 'pythonSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">{{post.title}}</a></h4>
+                  <p class="text-muted">{{post.description | truncatewords:150}}</p>
+                  {% comment %} <a href="{% url 'pythonSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a> {% endcomment %}
+                  <a href="{% url 'pythonSingle_post' post.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a>
+                </div>
+              </div>
+            {% endfor %}
+            <!-- **************************************************************************************** -->
+            {% for post in django_posts %}
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                    <p class="fw-bold" style="font-family: 'Raleway', sans-serif;">Published, {{post.post_created}}</p>
+                    <h4 style="font-family: 'Secular One', sans-serif;"><a href="{% url 'DjangoSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">{{post.title}}</a></h4>
+                    <p class="text-muted">{{post.description | truncatewords:150}}</p>
+                    {% comment %} <a href="{% url 'DjangoSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a> {% endcomment %}
+                    <a href="{% url 'DjangoSingle_post' post.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- **************************************************************************************** -->
+            {% for post in ml_posts %}
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                    <p class="fw-bold" style="font-family: 'Raleway', sans-serif;">Published, {{post.post_created}}</p>
+                    <h4 style="font-family: 'Secular One', sans-serif;"><a href="{% url 'MLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">{{post.title}}</a></h4>
+                    <p class="text-muted">{{post.description | truncatewords:150}}</p>
+                    {% comment %} <a href="{% url 'MLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a> {% endcomment %}
+                    <a href="{% url 'MLSingle_post' post.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- **************************************************************************************** -->
+            {% for post in dl_posts %}
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                    <p class="fw-bold" style="font-family: 'Raleway', sans-serif;">Published, {{post.post_created}}</p>
+                    <h4 style="font-family: 'Secular One', sans-serif;"><a href="{% url 'DLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">{{post.title}}</a></h4>
+                    <p class="text-muted">{{post.description | truncatewords:150}}</p>
+                    {% comment %} <a href="{% url 'DLSingle_post' post.id %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a> {% endcomment %}
+                    <a href="{% url 'DLSingle_post' post.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm mb-2">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- **************************************************************************************** -->
+
+
+ 
+        </div>
+
+      </div>
+  </main>
+  <hr>
+{% endblock content %}
+  <!-- content end-->

@@ -10,14 +10,7 @@
           <h1 class="lead display-6  text-center p-2">User LogIn Form</h1><hr>
         </div>
       </div>
-        {% if messages %}
-            {% for message in messages %}
-                <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
-                    <strong>Message:</strong> {{message}}.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
+        
         <div class="row justify-content-center mb-5">
             <div class="col-md-4 mt-5 shadow p-3">
                 <div class="mb-2">
@@ -43,9 +36,9 @@
                             </label>
                         </div>
 
-                        <div class="text-end"><a href="">Forgot password</a></div>
-                        <button type="submit" class="btn btn-primary mt-2">LogIn</button>
-                        <a class="btn btn-danger mt-2" href="{% url 'home' %}">Close</a>
+                        <div class="text-end"><a href="{% url 'forgetPassword' %}">Forgot password</a></div>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">LogIn</button>
+                        <a class="btn btn-danger btn-sm mt-2" href="{% url 'home' %}">Cancel</a>
                     </form>
                 </div>
                 <div class="text-center mt-4">

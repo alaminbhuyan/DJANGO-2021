@@ -11,14 +11,6 @@
         </div>
     </div>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
-                <strong>Message:</strong> {{message}}.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
-    {% endif %}
 
     <div class="row justify-content-center">
         <div class="col-md-5 mt-3 shadow p-3">
@@ -43,8 +35,8 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-3">SignUp</button>
-                        <a class="btn btn-danger mt-3" href="{% url 'home' %}">Close</a>
+                        <button type="submit" class="btn btn-primary btn-sm mt-3">SignUp</button>
+                        <a class="btn btn-danger btn-sm mt-3" href="{% url 'home' %}">Cancel</a>
                     </form>
                 </div>
         </div>
