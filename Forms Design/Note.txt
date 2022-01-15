@@ -10,4 +10,4 @@
 
 5) userProfile2 --> apply function based view (signUp: good, changePassword: good, login: good, profileUpdate: not good)
 
-6) signUpWithGmail --> apply function based view (some module is depricated so not working)
+6) signUpWithGmail --> apply function based view (some module is depricated so not working. need django version 3)

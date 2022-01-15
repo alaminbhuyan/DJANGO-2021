@@ -1,6 +1,6 @@
-1) custom filter create ---> All Project > Project with env > resumeUploder
+1) custom filter create ---> All Project > Project with env > resumeUploder; and also All_Project/MyBlog2/blog/templatetags
 
-2) change local time: Asia/Dhaka
+2) change local time: TIME_ZONE = 'Asia/Dhaka'
 
 3) blog 'read more' option--> pagination class based view file
 
@@ -19,3 +19,5 @@
 10) User profile for individual user login --> Forms Design > userProfile
 
 11) Re-set password using email --> Authentication > resetPasswordWithGmail
+
+12) Apply pagination --> ALL Project/CURD/app1/templates/app1/addAndShow.html
