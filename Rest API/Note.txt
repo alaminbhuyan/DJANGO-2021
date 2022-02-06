@@ -1,0 +1,59 @@
+1) Serilizer and serializertion in django rest framework
+
+2) serilizer fields and core arguments
+
+3) DeSerializer and insert data django rest framework
+
+4) CRUD api using function based view and class based view
+
+5) Validation in django rest framework
+
+6) Model serializer in django rest framework
+
+7) Function based api view in django rest framework
+
+8) class based api view in django rest framework
+
+9) Generic api view and mixins in django rest framework
+
+10) Concrete view class in django rest framework
+
+11) ViewSet in django rest framework
+
+12) Model view set and ready only model view set in djangor rest framework
+
+13) Basic authentication and permission class in django rest framework
+
+14) Session authentication and permission in django rest framework
+
+15) Custom permission in django rest framework
+
+16) Authentication and permission in function based view in django rest framework
+
+17) Token authentication in django rest framework
+
+18) Custom authentication in django rest framework
+
+19) JSON web token and simple JWT in django rest framework
+
+20) Throttling in django rest framework
+
+21) Filtering and django filter in django rest framework
+
+22) Search filter in django rest framework
+
+23) Ordering Filter in django rest framework
+
+24) Page number pagination in django rest framework
+
+25) Limit Offset pagination in django rest framework
+
+26) Cursor Pagination in django rest framework
+
+27) Serilizer Relations in django rest framework
+
+28) Hyperlinked Model serializer in django rest framework
+
+29) Nested Serializer in django rest framework
+
+30) Django API project and how to Disable Browsable API in production
