@@ -122,7 +122,7 @@ MESSAGE_TAGS = {
 }
 
 
-# For disable the browserable api
+#? For disable the browserable api
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES' : ('rest_framework.renderers.JSONRenderer',)
 }

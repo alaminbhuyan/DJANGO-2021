@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
+
+#! This decorator used for handle csrf verification when send post request
 @csrf_exempt
 def student_create(request):
     if request.method == "POST":
@@ -18,10 +20,10 @@ def student_create(request):
         serializer = StudentSerializer(data=python_data)
         if serializer.is_valid():
             serializer.save()
-            response_data = {'message':"Data is created"}
+            response_data = {'message': "Data is created"}
             json_data = JSONRenderer().render(data=response_data)
             return HttpResponse(json_data, content_type='application/json')
         json_data = JSONRenderer().render(data=serializer.errors)
         return HttpResponse(json_data, content_type='application/json')
-    
+
     return HttpResponse("hello world")

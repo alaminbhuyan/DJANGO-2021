@@ -12,7 +12,7 @@ from rest_framework import status
 # def studentAPI(request):
 #     return Response({"message" : "Hello world"})
 
-#--------------------------------------------------------------------
+# --------------------------------------------------------------------
 
 # @api_view(['GET']) # GET have by default
 # def studentAPI(request):
@@ -23,7 +23,7 @@ from rest_framework import status
 #     if request.method == "POST":
 #         return Response({"message" : "This is Post"})
 
-#--------------------------------------------------------------------
+# --------------------------------------------------------------------
 
 # @api_view(['GET','POST'])
 # def studentAPI(request):
@@ -46,7 +46,7 @@ from rest_framework import status
 #         stu = Student.objects.all()
 #         serializer = StudentSerializer(instance=stu, many=True)
 #         return Response(data=serializer.data)
-    
+
 #     # For post request
 #     if request.method == "POST":
 #         serializer = StudentSerializer(data=request.data)
@@ -54,7 +54,7 @@ from rest_framework import status
 #             serializer.save()
 #             return Response({'message' : 'Data is created'})
 #         return Response(serializer.errors)
-    
+
 #     # For Put request
 #     if request.method == "PUT":
 #         id = request.data.get('id')
@@ -64,7 +64,7 @@ from rest_framework import status
 #             serializer.save()
 #             return Response({'message' : 'Data is Updated'})
 #         return Response(serializer.errors)
-    
+
 #     # For Delete request
 #     if request.method == "DELETE":
 #         id = request.data.get('id')
@@ -74,8 +74,9 @@ from rest_framework import status
 
 # -------------------------------------------------------------------------------------------
 
-@api_view(['GET','POST', 'PUT', 'PATCH', 'DELETE'])
-def studentAPI(request, pk=None):
+
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+def StudentAPI(request, pk=None):
     if request.method == "GET":
         id = pk
         if id is not None:
@@ -85,38 +86,39 @@ def studentAPI(request, pk=None):
         stu = Student.objects.all()
         serializer = StudentSerializer(instance=stu, many=True)
         return Response(data=serializer.data)
-    
+
     # For post request
     if request.method == "POST":
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message' : 'Data is created'}, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Data is created'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     # For Put request
     if request.method == "PUT":
         id = pk
         stu = Student.objects.get(pk=id)
-        serializer = StudentSerializer(instance=stu,data=request.data)
+        serializer = StudentSerializer(instance=stu, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message' : 'Data is Complete Updated'})
+            return Response({'message': 'Data is Complete Updated'})
         return Response(serializer.errors)
 
     # For Patch request
     if request.method == "PATCH":
         id = pk
         stu = Student.objects.get(pk=id)
-        serializer = StudentSerializer(instance=stu,data=request.data, partial=True)
+        serializer = StudentSerializer(
+            instance=stu, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message' : 'Data is Partial Updated'})
+            return Response({'message': 'Data is Partial Updated'})
         return Response(serializer.errors)
-    
+
     # For Delete request
     if request.method == "DELETE":
         id = pk
         stu = Student.objects.get(pk=id)
         stu.delete()
-        return Response({"message" : "Data is Deleted"})
+        return Response({"message": "Data is Deleted"})

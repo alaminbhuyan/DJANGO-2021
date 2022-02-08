@@ -11,7 +11,7 @@ import io
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class studentAPI(View):
+class StudentAPI(View):
     def get(self, request, *args, **kwargs):
         # For Read data
         json_data = request.body

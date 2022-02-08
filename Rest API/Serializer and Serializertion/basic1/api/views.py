@@ -4,24 +4,30 @@ from .serializers import StudentSerializer
 from rest_framework.renderers import JSONRenderer
 from django.http import JsonResponse
 
+
 # Model object for single Student data
+
+
 def home(request):
-    student = Student.objects.get(id = 1)
+    student = Student.objects.get(id=1)
     serializer = StudentSerializer(instance=student)
-    json_data = JSONRenderer().render(serializer.data) # no need when use JsonResponse
-    return HttpResponse(json_data, content_type='application/json') # no need when use JsonResponse
+    json_data = JSONRenderer().render(serializer.data)  # no need when use JsonResponse
+    # no need when use JsonResponse
+    return HttpResponse(json_data, content_type='application/json')
 
     # We can also use JsonResponse
-    #return JsonResponse(serializer.data, safe=True) # By default safe=True
+    # return JsonResponse(serializer.data, safe=True) # By default safe=True
 
 
 def studentInfo(request, pk):
-    student = Student.objects.get(pk = pk)
+    student = Student.objects.get(pk=pk)
     serializer = StudentSerializer(instance=student)
     json_data = JSONRenderer().render(serializer.data)
     return HttpResponse(json_data, content_type='application/json')
 
 # Model object for all Student data
+
+
 def studentInfo2(request):
     student = Student.objects.all()
     serializer = StudentSerializer(instance=student, many=True)

@@ -127,11 +127,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Set Globally BasicAuthentication and Permission
+#! Set Globally BasicAuthentication and Permission
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES' : ['rest_framework.authentication.BasicAuthentication'],
 #     'DEFAULT_PERMISSION_CLASSES' : ['rest_framework.permissions.IsAuthenticated']
 # }
 
-# Note: you can use here all permission class like, rest_framework.permissions.IsAdminUser
+## Note: you can use here all permission class like, rest_framework.permissions.IsAdminUser

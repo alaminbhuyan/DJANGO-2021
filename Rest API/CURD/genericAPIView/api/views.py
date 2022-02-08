@@ -4,7 +4,7 @@ from .serializers import StudentSerializer
 from rest_framework.generics import GenericAPIView, ListAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, UpdateModelMixin, DestroyModelMixin, RetrieveModelMixin
 
-# List and Create --> pk not required
+## List and Create --> pk not required
 class LCStudentAPI(GenericAPIView, ListModelMixin, CreateModelMixin):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
@@ -15,7 +15,7 @@ class LCStudentAPI(GenericAPIView, ListModelMixin, CreateModelMixin):
     def post(self, request, *args, **kwargs):
         return self.create(request=request, *args, **kwargs)
 
-# Retrive, Update, Delete --> pk required
+## Retrive, Update, Delete --> pk required
 class RUDStudentAPI(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer

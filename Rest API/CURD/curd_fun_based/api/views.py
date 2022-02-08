@@ -39,7 +39,7 @@ def studentAPI(request):
             response_data = {'message' : "Data is created"}
             # json_data = JSONRenderer().render(data=response_data)
             # return HttpResponse(json_data, content_type='application/json')
-            return JsonResponse(response_data, safe=False)
+            return JsonResponse(response_data, safe=False) # when pass all data then self must be False
 
         json_data = JSONRenderer().render(data=serializer.errors)
         return HttpResponse(json_data, content_type='application/json')

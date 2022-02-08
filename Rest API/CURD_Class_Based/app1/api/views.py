@@ -1,4 +1,3 @@
-from rest_framework.decorators import authentication_classes, permission_classes
 from app1.models import User
 from app1.api.serializers import UserSerializer
 from rest_framework import viewsets

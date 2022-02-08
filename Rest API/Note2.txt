@@ -1,0 +1,9 @@
+
+1) CURD_Class_Based --> CURD operation and add API for this CURD operations
+
+2) D:\DJANGO 2021\Rest API\CURD\fun_based_ApiView --> This Function based API view give you browsable api for better understanding. In Function based ApiView you have to write more code so that, you can use generic API View (***Important) --> @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+
+3) D:\DJANGO 2021\Rest API\CURD\class_based_ApiView --> This Class based API view give you browsable api for better understanding. In Class based ApiView you have to write more code so that, you can use generic API View (***Important) --> class StudentAPI(APIView)
+
+4) D:\DJANGO 2021\Rest API\CURD\genericAPIView --> This generic API View give you browsable api for better understanding. (***Important)
+

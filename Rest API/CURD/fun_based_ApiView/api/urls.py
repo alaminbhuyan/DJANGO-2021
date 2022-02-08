@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path(route='', view=views.studentAPI, name="student_api"),
-    path(route='<int:pk>', view=views.studentAPI, name="student_api"),
+    path(route='', view=views.StudentAPI, name="student_api"),
+    path(route='<int:pk>', view=views.StudentAPI, name="student_api"),
 ]
