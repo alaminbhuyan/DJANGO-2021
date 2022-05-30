@@ -1,0 +1,57 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block title %}About page{% endblock title %}
+
+{% block content %}
+<main>
+    {% comment %} <div class="container-fluid" style="background-color: #F3F4F6;"> {% endcomment %}
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                        <h2 class="text-center text-muted" style="font-family: 'Secular One', sans-serif;">
+                            {{post.header}}</h2>
+                        <div>
+                            <h2 class="text-center p-3">General Code Of Conduct</h2>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">
+                                    The definition of Club Member: Any Student of the School of Business has registered
+                                    himself/herself as a member by applying in the specified form of the club.
+                                </li>
+                                <li class="list-group-item">All Club Members must observe the highest standard of
+                                    behevior and act responsibly when representing the club or attending and
+                                    event/activity organized by this or any other Club</li>
+                                <li class="list-group-item">A Club member who cannot maintain the expected level of
+                                    behavior may be subject to disciplinary action. For example, Misuse of the power
+                                    given to him from the club.</li>
+                                <li class="list-group-item">No remarks should be used cr discrimination should be made
+                                    based on seniority, race, religion, origin, gender, ability, or age.</li>
+                                <li class="list-group-item">Following set of behaviors are also expectd from Club
+                                    Members: <br>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item">Exhibit good attendance and punctuality in all club
+                                            events;</li>
+                                        <li class="list-group-item">Follow the chain-of-command of the club;</li>
+                                        <li class="list-group-item">Show respect to any decision of the club;</li>
+                                        <li class="list-group-item">Dress in business oufit in any formal event/meeting
+                                            of the club;</li>
+                                        <li class="list-group-item">Do not use club property/fund for personal benefit;
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="list-group-item">Every Officer and member is expected to perform his/her
+                                    given task and duties accordingly. Failure to meet the deadlines may result in
+                                    termination from the posts.</li>
+                                <li class="list-group-item">All the members are required to have utmost precautionary
+                                    measure so tht the image of the school of Business is not hampered.</li>
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+</main>
+{% endblock content %}

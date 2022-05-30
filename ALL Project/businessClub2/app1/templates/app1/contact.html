@@ -1,0 +1,30 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block title %}Contact Page{% endblock title %}
+
+
+{% block content %}
+<main>
+    {% comment %} <div class="container-fluid" style="background-color: #F3F4F6;"> {% endcomment %}
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 my-3 p-4 bg-body shadow rounded">
+                        <h2 class="text-center text-muted" style="font-family: 'Secular One', sans-serif;">
+                            {{post.header}}</h2>
+                        <div>
+                            <h2 class="text-center p-3">Contact US</h2>
+                            <hr class="text-muted">
+                            <p class="text-center">Mobile Number: +8801766572005</p>
+                            <p class="text-center">E-mail: 2201011038@uttarauniversity.edu.bd</p>
+                            <p class="text-center">Whatsapp: +8801766572005</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+</main>
+{% endblock content %}

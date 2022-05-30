@@ -1,0 +1,81 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'app1/images/icon-2.png' %}">
+    <link rel="stylesheet" href="{% static 'app1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="css/form-validation.css">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href=""><img src="{% static 'app1/images/logo2.png' %}" alt="image logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'aboutpage' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'contactpage' %}">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %} alert-dismissible fade show mb-0" role="alert">
+            <strong>Message:</strong> {{message}}.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+
+
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022–2024 Verification By <b>Anamul Hoque</b></p>
+        <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="{% url 'aboutpage' %}">Terms</a></li>
+        <li class="list-inline-item"><a href="{% url 'contactpage' %}">Support</a></li>
+        </ul>
+    </footer>
+
+    <script src="{% static 'app1/js/jquery.js' %}"></script>
+    <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app1/js/popper.js' %}"></script>
+    <script src="{% static 'app1/js/form-validation.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script>
+        var typed = new Typed(".text", {
+            // now we will store all the text inside a list
+            strings: ["Welcome To Our Business Club", "Uttara University", "Join Our Business Club"
+            ],
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: true
+        })
+    </script>
+</body>
+
+</html>

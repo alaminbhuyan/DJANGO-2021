@@ -1,0 +1,72 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock title %}
+
+{% block content %}
+
+<section class="py-2 text-center container-fluid" style="background-color: #E9ECEF;">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <img src="{% static 'app1/images/logo.jpg' %}" alt="Image" class="rounded-circle mx-auto d-block p-3">
+
+            <h1 class=""><span class="text"></span></h1>
+            <p class="lead text-muted">UUBC offers a fresh approach to business networking using traditional networking events and via our members App. Our events are delivered in a professional but relaxed style to provide our members with the opportunity to grow and forge lasting business relationships.</p>
+            <p>
+                <!-- <a href="#C1" target="" class="btn btn-primary my-2">Browse Blog</a> -->
+                <a href="{% url 'registrationform' %}" class="btn btn-outline-success my-2">Join Our Club</a>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<div>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="{% static 'app1/images/img1.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Discussion</h5>
+                    <p>Discussing about the business club and how to improve it.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="{% static 'app1/images/img2.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Planing</h5>
+                    <p>Making plan with the members of business club.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="{% static 'app1/images/img3.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Monitoring</h5>
+                    <p>Monitoring all the thing in business club.</p>
+                </div>
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+{% endblock content %}
